@@ -37,6 +37,8 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.android.settings.R;
+
 public class DeviceInfoSettings extends SettingsPreferenceFragment {
 
     private static final String LOG_TAG = "DeviceInfoSettings";
@@ -63,6 +65,10 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
     private static final String KEY_UPDATE_SETTING = "additional_system_update_settings";
     private static final String KEY_EQUIPMENT_ID = "fcc_equipment_id";
     private static final String PROPERTY_EQUIPMENT_ID = "ro.ril.fccid";
+
+    private static final String KEY_BYTEME_VERSION = 'byteme_version";
+   
+    private static final String BYTE_ROM_SHARE = "share";
 
     static final int TAPS_TO_BE_A_DEVELOPER = 7;
 
@@ -203,7 +209,14 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
                 mDevHitToast = Toast.makeText(getActivity(), R.string.show_dev_already,
                         Toast.LENGTH_LONG);
                 mDevHitToast.show();
-            }
+                     }
+                 }
+            } else if (preference.getKey().equals(BYTE_ROM_SHARE)) {
+                Intent intent = Intent();
+                intent.setAction(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_TEXT, String.format(
+                        getActivity(Intent.createChooser(intent, getActivity().getString(R.string.share_chooser_title)));
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }

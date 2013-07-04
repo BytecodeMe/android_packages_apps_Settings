@@ -30,6 +30,9 @@
             <intent android:action="android.intent.action.MAIN"
                     android:targetPackage="@string/additional_system_update"
                     android:targetClass="@string/additional_system_update_menu" />
+        <Preference android:key="share"
+                    android:title="@string/share_ajisawhore"
+                    android:summary="@string/share_ajisawhore_summary"/>
         </PreferenceScreen>
 
         <!-- Device status - launches activity -->
